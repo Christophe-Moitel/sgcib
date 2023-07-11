@@ -78,4 +78,10 @@ public class OperationBean implements Serializable {
 	public void setDate(LocalDateTime date) {
 		this.date = date;
 	}
+
+	@Override
+	public String toString() {
+		return String.format("OP %1$tY-%1$tm-%1$td %1$tT | %2$10s | %3$.2f | %4$.2f%n", this.getDate(),
+				this.getOperationType().name(), this.getAmount(), this.getBalance());
+	}
 }

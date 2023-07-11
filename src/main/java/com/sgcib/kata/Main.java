@@ -96,7 +96,6 @@ public class Main {
 					console.printf("%n");
 				} else if (operationType.matches(String.format("(?i)%s", ACCOUNT_OP))) {
 					accountNumber = selectAccount();
-					continue;
 				} else if (operationType.matches(String.format("(?i)%s", STOP_OP))) {
 					console.printf("Bye%n%n");
 					break;
@@ -110,11 +109,8 @@ public class Main {
 	/**
 	 * Affiche toutes les opérations du compte client.
 	 */
-	private static void displayOperations(Stack<OperationBean> history) {
-		for (var operation : history) {
-			System.console().printf("OP %1$tY-%1$tm-%1$td %1$tT | %2$10s | %3$.2f | %4$.2f%n", operation.getDate(),
-					operation.getOperationType().name(), operation.getAmount(), operation.getBalance());
-		}
+	private static void displayOperations(Stack<OperationBean> operations) {
+		operations.stream().map(Object::toString).forEach(System.console()::printf);
 	}
 
 	/**
